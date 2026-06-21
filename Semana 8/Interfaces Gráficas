@@ -1,0 +1,81 @@
+---
+title: "Exemplos de Interfaces Gráficas com Tkinter"
+subtitle: "Algoritmos e Programação de Computadores (APC)"
+author: "Erick Araujo"
+date: last-modified
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+---
+
+## Sobre
+
+Este repositório reúne uma sequência de exemplos didáticos em **Python**
+usando a biblioteca **Tkinter** para construção de interfaces gráficas
+(GUI). Os códigos foram desenvolvidos para a disciplina de **Algoritmos e
+Programação de Computadores (APC)**, ministrada pelo professor **Jorge
+Henrique Cabral Fernandes**.
+
+Cada arquivo é independente e progride em complexidade, do mais simples
+(uma janela em branco) até um exemplo com gráficos interativos usando
+Matplotlib.
+
+## Pré-requisitos
+
+- Python 3.8+
+- Tkinter (geralmente já vem instalado com o Python)
+- Para o exemplo `06_grafico.py`: `matplotlib` e `numpy`
+
+```bash
+pip install matplotlib numpy
+```
+
+## Como executar
+
+Basta rodar cada arquivo individualmente:
+
+```bash
+python nome_do_arquivo.py
+```
+
+## Estrutura dos exemplos
+
+### `01_janela_basica.py`
+Introduz os três passos essenciais de qualquer aplicação Tkinter:
+1. Criar a janela raiz (`tk.Tk()`);
+2. Configurar propriedades (título, tamanho);
+3. Iniciar o loop de eventos com `mainloop()`.
+
+### `02_widgets.py`
+Apresenta os widgets básicos: `Label`, `Entry`, `Button` e
+`Checkbutton`. Mostra como capturar o texto digitado e atualizar
+dinamicamente um rótulo a partir de um clique de botão.
+
+### `03_layout_grid.py`
+Demonstra o gerenciador de layout `grid()`, organizando widgets em
+linhas e colunas — útil para formulários. Explora também as opções
+`sticky` (alinhamento) e `columnspan` (mesclagem de colunas).
+
+### `04_eventos_bind.py`
+Explica o uso do método `bind()` para capturar eventos de mouse
+(clique, movimento) e teclado, registrando-os em um widget `Text` em
+tempo real.
+
+### `05_dialogos.py`
+Explora as caixas de diálogo prontas do Tkinter: `messagebox`
+(informação, erro, confirmação), `filedialog` (seleção de arquivos) e
+`simpledialog` (entrada de texto simples).
+
+### `06_grafico.py`
+Integra Tkinter com **Matplotlib** para exibir gráficos interativos
+dentro da janela. Usa `Radiobutton` para alternar entre funções
+matemáticas (seno, cosseno, tangente, quadrática) e inclui a barra de
+ferramentas nativa de zoom/pan.
+
+## Autoria
+
+| | |
+|---|---|
+| **Autor** | Erick Araujo |
+| **Disciplina** | Algoritmos e Programação de Computadores (APC) |
+| **Professor** | Jorge Henrique Cabral Fernandes |
