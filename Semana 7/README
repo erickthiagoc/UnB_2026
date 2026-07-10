@@ -1,0 +1,124 @@
+Estudo de C — Cheatsheet com Exercícios (PythonTutor)
+Disciplina: Algoritmo e Programação de Computadores — 2026.1
+Aluno: Erick Thiago Cardoso Araujo
+Professor: Jorge Henrique Cabral Fernandes (JHCF)
+Universidade: Universidade de Brasília (UnB)
+Repositório de estudos de linguagem C com exercícios práticos para visualização passo a passo no PythonTutor.
+
+Como usar
+
+Acesse pythontutor.com/c.html
+Cole o código do exercício desejado
+Clique em "Visualize Execution"
+Use os botões Next e Prev para avançar passo a passo
+Observe o estado das variáveis, da pilha (stack) e do heap em tempo real
+
+3,6
+
+Dicas extras no PythonTutor:
+
+Ative "Show all frames" para acompanhar funções recursivas empilhando
+Ative "Render memory → Show in compact mode" para arrays grandes
+Use "Generate permanent link" para salvar e compartilhar exercícios
+
+
+
+Conteúdo
+#TópicoO que você aprende1Estrutura de um programamain, call stack, return2Tipos primitivoschar, int, float, double, sizeof3Declaração e inicializaçãovariáveis, const, valor lixo4Operadoresdivisão inteira, módulo, pré/pós-incremento, ternário5Controle de fluxoif/else, for, while, do-while, switch6Funçõesprotótipos, recursão, passagem por referência7Arraysarrays unidimensionais, matrizes, limites8Stringsstrlen, strcpy, strcmp, terminador \09Ponteirosderreferência, aritmética de ponteiros, ponteiro para ponteiro10Alocação dinâmicamalloc, free, heap vs. stack11Structs e Unionscampos, ->, membros compartilhados12Enumsvalores inteiros subjacentes, uso com switch13I/O básicaprintf, scanf, especificadores de formato14Pré-processador#define, macros com parâmetros, armadilhas15Escopo e duraçãovariáveis automáticas, static, extern16Boas práticasstrncpy, verificação de malloc, flags de compilação
+
+Tópicos detalhados
+1. Estrutura de um programa
+Todo programa C parte de main. O PythonTutor mostra o frame de main na call stack e sua saída quando return 0 é executado.
+2. Tipos primitivos
+C tem tipos de tamanho fixo: char (1 byte), int (4 bytes), float (4 bytes), double (8 bytes). O operador sizeof revela o tamanho real em cada plataforma.
+3. Declaração e inicialização
+Variáveis não inicializadas contêm valor lixo — sempre inicialize antes de usar. const torna uma variável somente leitura em tempo de compilação.
+4. Operadores
+Divisão entre inteiros trunca o resultado (17 / 5 = 3). O % retorna o resto. Pré-incremento (++x) retorna o valor após incrementar; pós-incremento (x++) retorna o valor antes.
+5. Controle de fluxo
+
+if/else if/else para ramificações
+for com break (interrompe) e continue (pula iteração)
+do-while executa o corpo antes do teste
+switch com fall-through intencional para agrupar casos
+
+6. Funções
+Funções empilham frames na call stack. Recursão empilha frames múltiplos — visível no PythonTutor. Passagem por referência usa ponteiros: void dobra(int *x) { *x *= 2; }.
+7. Arrays
+Arrays em C são regiões contíguas de memória. Não há verificação de limites em tempo de execução — acessar além do tamanho é comportamento indefinido. Matrizes são arrays de arrays: int m[2][3].
+8. Strings
+Strings em C são arrays de char terminados por '\0'. char s[] = "hello" ocupa 6 bytes (5 + terminador). Funções principais: strlen, strcpy, strcmp (de <string.h>).
+9. Ponteiros
+Um ponteiro guarda um endereço de memória. &x = endereço de x; *p = valor no endereço apontado por p. Aritmética de ponteiros avança em múltiplos do tamanho do tipo. Ponteiro para ponteiro (int **pp) cria dois níveis de indireção.
+10. Alocação dinâmica
+malloc(n * sizeof(int)) aloca no heap (painel direito no PythonTutor). Sempre verifique o retorno (if (!p) { ... }). Todo malloc deve ter um free correspondente; após liberar, aponte para NULL.
+11. Structs e Unions
+struct agrupa campos de tipos diferentes em um único tipo. Acesso direto: p.x; via ponteiro: ptr->x (equivale a (*ptr).x). union faz todos os membros compartilharem o mesmo espaço de memória — escrever em um sobrescreve os outros.
+12. Enums
+enum define constantes inteiras nomeadas. O valor subjacente começa em 0 por padrão e pode ser iterado com for. Combina naturalmente com switch.
+13. I/O básica
+printf usa especificadores: %d (int), %f (float), %lf (double), %c (char), %s (string), %p (ponteiro), %x (hexadecimal). scanf requer o endereço da variável (&).
+14. Pré-processador
+#define realiza substituição textual antes da compilação. Macros com parâmetros precisam de parênteses extras para evitar ambiguidades: #define QUADRADO(x) ((x)*(x)). Evite efeitos colaterais como MAX(a++, b).
+15. Escopo e duração
+
+Automática: existe apenas no bloco onde foi declarada
+static local: persiste entre chamadas, inicializada uma única vez
+static global: visível apenas no arquivo .c
+extern: referencia variável definida em outro arquivo
+
+16. Boas práticas
+
+Inicialize todas as variáveis
+Use strncpy/snprintf em vez de strcpy/sprintf
+Verifique o retorno de malloc e fopen
+Compile com -Wall -Wextra -fsanitize=address
+Use const quando um ponteiro não deve modificar o dado
+
+
+Compilando localmente
+bashgcc -Wall -Wextra -fsanitize=address -o programa arquivo.c
+./programa
+
+Estrutura do repositório
+.
+├── README.md
+├── 01_estrutura/
+│   └── hello.c
+├── 02_tipos/
+│   └── sizeof.c
+├── 03_variaveis/
+│   └── inicializacao.c
+├── 04_operadores/
+│   └── operadores.c
+├── 05_fluxo/
+│   ├── if_else.c
+│   ├── for_break_continue.c
+│   ├── do_while.c
+│   └── switch.c
+├── 06_funcoes/
+│   └── fatorial_recursivo.c
+├── 07_arrays/
+│   └── arrays_matrizes.c
+├── 08_strings/
+│   └── strings.c
+├── 09_ponteiros/
+│   ├── ponteiro_basico.c
+│   ├── aritmetica_ponteiros.c
+│   └── ponteiro_para_ponteiro.c
+├── 10_dinamica/
+│   └── malloc_free.c
+├── 11_structs/
+│   ├── struct_ponto.c
+│   └── union.c
+├── 12_enums/
+│   └── enum_semana.c
+├── 13_io/
+│   └── printf_formato.c
+├── 14_preprocessador/
+│   └── macros.c
+├── 15_escopo/
+│   ├── escopo_bloco.c
+│   └── static_local.c
+└── 16_boas_praticas/
+    └── strncpy_seguro.c
